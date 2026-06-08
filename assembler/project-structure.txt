@@ -1,0 +1,27 @@
+dist/                                                            <- target folder for endfiles
+| api/                                                           <- target folder for api endfiles
+| css/                                                           <- target folder for css files
+| js/                                                            <- target folder for js files
+| ...                                                            <- pages files, logout.php, etc.
+src/
+| api/                                                           <- api endpoints
+| core/                                                          <- generic backend files to include in every endpoint file (except api)
+| frontend/
+| | partials/                                                    <- partial views with asset files
+| | | partial-name/                                              <- each partial view has a folder named like partial-view (example: bottom-navbar)
+| | | | partial-name.{php / html}                                <- main partial view file (required)
+| | | | partial-name.{css / js}                                  <- asset files (optional)
+| | | ...
+| | scripts/                                                     <- standalone js scripts (directly copied to /dist/js)
+| | | api/                                                       <- api access js scripts
+| | | {feature}/                                                 <- folder for feature-wise scripts (ex: folder 'validate' for validation files)
+| | | ...
+| pages/                                                         <- pages files
+| | {feature}/                                                   <- feature folder (can have page files and/or {}-fn.php / view-{}.css files for nested pages)
+| | | {subfeature}/                                              <- subfeature folder
+| | | | {feature-subfeature}.php                                 <- main page file (required for page)
+| | | | {feature-subfeature-{ checks / fn / post }}.php          <- feature page support files (optional)
+| | | | {view-feature-subfeature.{ php / html / css / js }}      <- view files
+| | index.php                                                    <- main index page file - this one and any additional index files (js, css) are handled at build-get-pages.php
+| .htaccess                                                      <- copied directly to /dist
+| ...                                                            <- any files at /src will be directly copied to the dist folder (ex: logout.php)
